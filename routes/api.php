@@ -8,4 +8,4 @@ use Illuminate\Support\Facades\Route;
 
 //Route::apiResource('v1/travels', TravelController::class);
 Route::get('v1/travels', [TravelController::class, 'index']);
-Route::get('v1/travels/{travel:slug}/tour', [TourController::class, 'index']);
+Route::get('v1/travels/{travel:slug}/tours', [TourController::class, 'index']);
