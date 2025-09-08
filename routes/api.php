@@ -5,11 +5,9 @@ use App\Http\Controllers\Api\V1\Admin\TravelController as AdminTravelController;
 use App\Http\Controllers\Api\V1\Auth\LoginController;
 use App\Http\Controllers\Api\V1\TourController;
 use App\Http\Controllers\Api\V1\TravelController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
-//Route::apiResource('v1/travels', TravelController::class);
+// Route::apiResource('v1/travels', TravelController::class);
 Route::get('v1/travels', [TravelController::class, 'index']);
 Route::get('v1/travels/{travel:slug}/tours', [TourController::class, 'index']);
 

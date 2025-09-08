@@ -26,10 +26,11 @@ class TourController extends Controller
                 $query->where('ending_date', '>=', $request->dateTo);
             })
             ->when($request->sortBy && $request->sortOrder, function ($query) use ($request) {
-                $query->orderBy($request->sortBy,  $request->sortOrder);
+                $query->orderBy($request->sortBy, $request->sortOrder);
             })
             ->orderBy('starting_date')
             ->paginate();
+
         return TourResource::collection($tours);
     }
 }

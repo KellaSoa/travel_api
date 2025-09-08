@@ -7,7 +7,6 @@ use App\Models\Travel;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminTravelTest extends TestCase
@@ -37,7 +36,7 @@ class AdminTravelTest extends TestCase
         $user = User::factory()->create();
         $user->roles()->attach(Role::where('name', 'admin')->value('id'));
         $response = $this->actingAs($user)->postJson('api/v1/admin/travels', [
-            'name' => 'Travel name'
+            'name' => 'Travel name',
         ]);
 
         $response->assertStatus(422);
@@ -46,7 +45,7 @@ class AdminTravelTest extends TestCase
             'name' => 'Travel name',
             'is_public' => 1,
             'description' => 'some description',
-            'number_of_days' => 5
+            'number_of_days' => 5,
         ]);
         $response->assertStatus(201);
         $response = $this->get('api/v1/travels');
@@ -60,17 +59,17 @@ class AdminTravelTest extends TestCase
         $user->roles()->attach(Role::where('name', 'editor')->value('id'));
         $travel = Travel::factory()->create();
 
-        $response = $this->actingAs($user)->putJson('api/v1/admin/travels/' . $travel->id, [
-            'name' => 'Travel name'
+        $response = $this->actingAs($user)->putJson('api/v1/admin/travels/'.$travel->id, [
+            'name' => 'Travel name',
         ]);
 
         $response->assertStatus(422);
 
-        $response = $this->actingAs($user)->putJson('api/v1/admin/travels/' . $travel->id, [
+        $response = $this->actingAs($user)->putJson('api/v1/admin/travels/'.$travel->id, [
             'name' => 'Travel name updated',
             'is_public' => 1,
             'description' => 'some description',
-            'number_of_days' => 5
+            'number_of_days' => 5,
         ]);
         $response->assertStatus(200);
         $response = $this->get('api/v1/travels');

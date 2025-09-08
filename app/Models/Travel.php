@@ -12,10 +12,12 @@ use Illuminate\Support\Str;
 
 class Travel extends Model
 {
-    use HasFactory, Sluggable, HasUuids;
+    use HasFactory, HasUuids, Sluggable;
 
     protected $table = 'travels';
+
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
@@ -25,7 +27,6 @@ class Travel extends Model
         'number_of_days',
     ];
 
-
     public function tours(): HasMany
     {
         return $this->hasMany(Tour::class);
@@ -34,11 +35,12 @@ class Travel extends Model
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->{$model->getKeyName()}) {
+            if (! $model->{$model->getKeyName()}) {
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
     }
+
     public function sluggable(): array
     {
         return [
@@ -46,13 +48,14 @@ class Travel extends Model
                 'source' => 'name',
                 'unique' => true,
                 'onUpdate' => false,
-            ]
+            ],
         ];
     }
+
     public function numberOfNigths(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => $attributes['number_of_days'] - 1
+            get: fn ($value, $attributes) => $attributes['number_of_days'] - 1
         );
     }
 }

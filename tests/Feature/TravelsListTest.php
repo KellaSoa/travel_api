@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TravelsListTest extends TestCase
@@ -21,6 +20,7 @@ class TravelsListTest extends TestCase
         $response->assertJsonCount(15, 'data');
         $response->assertJsonPath('meta.last_page', 2);
     }
+
     public function test_travels_list_shows_only_public_records(): void
     {
 
