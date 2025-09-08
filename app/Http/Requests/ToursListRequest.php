@@ -24,13 +24,14 @@ class ToursListRequest extends FormRequest
     {
         return [
             'priceFrom' => 'nullable|numeric',
-            'priceTo'   => 'nullable|numeric',
-            'dateFrom'  => 'nullable|date',
-            'dateTo'    => 'nullable|date|after_or_equal:dateFrom',
-            'sortBy'    => ['nullable', Rule::in(['price'])],
+            'priceTo' => 'nullable|numeric',
+            'dateFrom' => 'nullable|date',
+            'dateTo' => 'nullable|date|after_or_equal:dateFrom',
+            'sortBy' => ['nullable', Rule::in(['price'])],
             'sortOrder' => ['nullable', Rule::in(['asc', 'desc'])],
         ];
     }
+
     public function messages(): array
     {
         return [
