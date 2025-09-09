@@ -84,7 +84,7 @@ Use it in your headers for all protected requests:
 Authorization: Bearer <your-token>
 ```
 
-### ⚡ This makes the step more easier:
+#### ⚡ This makes the step more easier:
 
 - Create a user
 - Login → get token
@@ -98,7 +98,7 @@ This project uses Scramble to generate API documentation.
 
 Local: http://localhost:8000/docs/api
 
-### The docs include details for:
+#### The docs include details for:
 
 - Authentication (Login)
 - Travels
@@ -125,12 +125,12 @@ composer require --dev laravel/pint
 
 Run Pint:
 
-# Check code style without changing files
+#### Check code style without changing files
 ```bash 
 ./vendor/bin/pint --test
 ```
 
-# Automatically fix code style
+#### Automatically fix code style
 ```bash 
 ./vendor/bin/pint
 ```
@@ -139,12 +139,12 @@ Run Pint:
 
 Larastan helps catch bugs and type issues in your Laravel project.
 
-# Install Larastan:
+#### Install Larastan:
 
 ```bash 
 composer require --dev "larastan/larastan:^3.0"
 ```
-# Then, create a phpstan.neon
+#### Then, create a phpstan.neon
 
 ```bash 
 includes:
@@ -165,7 +165,7 @@ parameters:
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php
 ```
-# Run Larastan: Analyze code and check for errors
+#### Run Larastan: Analyze code and check for errors
 
 ```bash 
 ./vendor/bin/phpstan analyse
